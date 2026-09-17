@@ -12,14 +12,16 @@
 html{background:#ffffff}
 body{margin:0;background:#ffffff;color:#000000;
      font-family:"Poppins","Helvetica Neue",Arial,sans-serif}
-.page{position:relative;width:595pt;height:842pt;margin:0 auto;
-      background:#ffffff;overflow:hidden}
+/* page framing copied from the Rehapoint policy, which carries
+   `body > div{box-shadow:0 0 5px rgba(0,0,0,.3);margin:20px auto}` */
+.page{position:relative;width:595pt;height:842pt;margin:20px auto;
+      background:#ffffff;overflow:hidden;box-shadow:0 0 5px rgba(0,0,0,0.3)}
 .page p{position:absolute;margin:0;padding:0;white-space:pre;line-height:1.4}
 .page a{color:inherit;text-decoration:none}
 .page svg.gfx{position:absolute;left:0;top:0;width:595pt;height:842pt}
 .page img.logo{position:absolute;left:111pt;top:166.8pt;width:372.94pt;height:161.75pt}
 @page{size:A4;margin:0}
-@media print{.page{page-break-after:always;margin:0}}
+@media print{.page{page-break-after:always;margin:0;box-shadow:none}}
 </style>
 </head>
 <body>
