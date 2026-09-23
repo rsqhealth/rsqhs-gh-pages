@@ -12,7 +12,7 @@ All repos share one review quota.
   strings, `versions.env` pins, tags, changelog), a back- or forward-merge of a release branch
   whose commits all came through reviewed PRs, or a cherry-pick of a merged PR. Do not ask for a
   review and do not wait for one. Merge on green CI. Address any finding Codex posts anyway.
-- If a merge's conflict resolution changed code, ask
+- If such a merge or cherry-pick needed a conflict resolution, ask
   `@codex review for the conflict resolution in <files>`.
 - Every other PR, docs included, gets a review when it is marked ready.
 - Push a round's fixes in one push, then ask once. Do not push while a review is `Running`.
@@ -27,7 +27,9 @@ All repos share one review quota.
 - Do not repeat a point from a resolved thread unless its code changed.
 - Version bump or release PR: check only that the new version agrees in every file that carries
   it.
-- Back- or forward-merge of a release branch: review only files where the merge result differs
-  from both parents.
+- Back- or forward-merge of a release branch: review only the conflict resolutions, i.e. what
+  the merge commit changes against an automatic re-merge (`git show --remerge-diff <merge>`).
+  A file resolved by taking one side whole counts.
+- Cherry-pick of a merged PR: review only what differs from the original commit's diff.
 - Skip lock files, wrapper jars and build output. For a generated file, review its template.
 <!-- END codex-review-rules -->
