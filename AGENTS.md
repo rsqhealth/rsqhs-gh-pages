@@ -31,5 +31,6 @@ All repos share one review quota.
   the merge commit changes against an automatic re-merge (`git show --remerge-diff <merge>`).
   A file resolved by taking one side whole counts.
 - Cherry-pick of a merged PR: review only what differs from the original commit's diff.
-- Skip lock files, wrapper jars and build output. For a generated file, review its template.
+- Skip lock-file churn, wrapper jars and build output. On a version bump, do check the package's
+  own version fields in `package-lock.json`. For a generated file, review its template.
 <!-- END codex-review-rules -->
