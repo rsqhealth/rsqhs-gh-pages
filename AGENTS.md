@@ -10,8 +10,11 @@ All repos share one review quota.
 
 - Skip Codex on a PR that only moves reviewed work: a version bump or release PR (only version
   strings, `versions.env` pins, tags, changelog), a back- or forward-merge of a release branch
-  whose commits all came through reviewed PRs, or a cherry-pick of a merged PR. Do not ask for a
-  review and do not wait for one. Merge on green CI. Address any finding Codex posts anyway.
+  whose commits all came through reviewed PRs, or a cherry-pick of a reviewed PR. A reviewed PR
+  is one whose Codex review ended clean or with every finding resolved. Do not ask for a review
+  and do not wait for one. Merge on green CI. Address any finding Codex posts anyway.
+- Before merging a version bump, check that the version agrees in every file that carries it,
+  including both version fields of `package-lock.json`.
 - If such a merge or cherry-pick needed a conflict resolution, ask
   `@codex review for the conflict resolution in <files>`.
 - Every other PR, docs included, gets a review when it is marked ready.
@@ -30,7 +33,7 @@ All repos share one review quota.
 - Back- or forward-merge of a release branch: review only the conflict resolutions, i.e. what
   the merge commit changes against an automatic re-merge (`git show --remerge-diff <merge>`).
   A file resolved by taking one side whole counts.
-- Cherry-pick of a merged PR: review only what differs from the original commit's diff.
+- Cherry-pick of a reviewed PR: review only what differs from the original commit's diff.
 - Skip lock-file churn, wrapper jars and build output. On a version bump, do check the package's
   own version fields in `package-lock.json`. For a generated file, review its template.
 <!-- END codex-review-rules -->
